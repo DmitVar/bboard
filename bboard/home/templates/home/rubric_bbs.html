@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_rubric.name }}::Объявления</title>
+</head>
+<body>
+    <h1>{{ current_rubric.name }}</h1>
+    <nav>
+        <a href="{% url 'home' %}">Главная</a>
+        {% for rubric in rubrics %}
+        <a href="{% url 'rubric' rubric.pk %}">{{ rubric.name}}</a>
+        {% endfor %}
+    </nav>
+    <div>
+        {% for bb in bbs %}
+            <h3>{{ bb.title }}</h3>
+            <p>{{ bb.description }}</p>
+            <p>{{ bb.price }}руб</p>
+            <p>{{ bb.published | date:'d.m.Y H:i:s'}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
